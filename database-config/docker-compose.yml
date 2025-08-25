@@ -1,0 +1,25 @@
+# Docker compose version of maria-db, which autoloads our db data as well.
+# Because MacOS hates MariaDb, and I cannot be bothered to install a linux VM just
+# for this assignment :). 
+# We still need to install mysql CLI to connect though.
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: cinema-db
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: cinema_booking
+      MYSQL_USER: cinema_user
+      MYSQL_PASSWORD: "1234"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql  
+    networks:
+      - cinema-net
+
+networks:
+  cinema-net:
