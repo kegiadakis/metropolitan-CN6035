@@ -176,4 +176,4 @@ npm run start:dev
 mysql -h 127.0.0.1 -P 3306 -u root -p cinema_booking < ../database-config/seed.sql
 ```
 
-9. et'voila, πρεπει να παιζει :P 
+
